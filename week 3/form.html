@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+  <meta charset="UTF-8">
+  <title>From-Valadation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="style.css">
+ <style>
+    .setError {
+        color: red;
+    }
+    .setSuccess {
+        color: green;
+    }
+</style>c
+
+</head>
+ <!-- Main Container -->
+ <div>
+      
+    <!-- Header Section -->
+    <header>
+      <h1 class="headeraH1">Wanderlust Voyages | Travel Agency</h1>
+    </header>
+
+    <!-- Navigation Section -->
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tasks.html">Tasks</a></li>
+    </ul>
+    </nav>
+    
+<body>
+    <div class= "container">
+       <form id="form" action="/">
+        <h1> Regestraion</h1>
+        <div class= "input-control">
+        <label for = "username" >username</label>
+        <input id="username" name="username" type="text" required>
+        <div class="error" id="usernameError"></div>
+    </div>
+    <div class= "input-control">
+        <label for = "Email">Email</label>
+        <input id="Email" name="email" type="email" required>
+        <div class="error"></div>
+    </div>
+
+    <div class="input-control">
+        <label for="Password" >Password</label>
+        <input id="Password" name="Password" type="password" required>
+        <div class="error"></div>
+        </div>
+        
+    <div class="input-control">
+        <label for=" Comfirm Password" > Comfirm Password</label>
+        <input id="Comfirm Password" name="Comfirm Password" type="password" required>
+        <div class="error"></div>
+        </div>
+        <button type="submit">Sign Up</button>
+       </form>
+    
+    </div>
+</body>
+<script>
+const form = document.getElementById("form");
+const username =  document.getElementById("username");
+const Email =  document.getElementById("Email");
+const Password =  document.getElementById("Password");
+const ComfirmPassword =  document.getElementById("Comfirm Password");
+
+form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    validateInputs();
+});
+
+const setError=(element, message)=>{
+    const inputControl = element.parseElement;
+    const errorDisplay = inputControl.querselector(".error");
+    errorDisplay.innerText = message;
+    inputControl.classList.add("error");
+    inputControl.classList.remove("succcess");
+}
+const setSuccess=(element)=>{
+    const inputControl = element.parseElement;
+    const errorDisplay = inputControl.querselector(".error");
+    errorDisplay.innerText = message;
+    inputControl.classList.add("succcess");
+    inputControl.classList.remove("error");
+};
+const isValidEmail = email => {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+};
+const validateInputs = () => {
+    const usernameValue = username.value.trim();
+    const emailValue = Email.value.trim();
+    const PasswordValue = Password.value.trim();
+    const ComfirmPasswordValue = ComfirmPassword.value.trim();
+
+    if(usernameValue === ""){
+          setError(username, "Username reqired");
+    }
+    else{
+        setSuccess(username);
+    }
+    if(emailValue === ""){
+        setError(Email, "Email reqired");
+    }
+    else if (!isValidEmail(emailValue)){
+        setError(Email, "Email reqired");
+    }
+    else{
+        setSuccess(Email);
+    }
+    if(PasswordValue === '') {
+        setError(Password, 'Password is required');
+    } else if (PasswordValue.length < 8 ) {
+        setError(Password, 'Password must be at least 8 character.')
+    } else {
+        setSuccess(Password);
+    }
+    if(ComfirmPasswordValue === '') {
+        setError(ComfirmPassword, 'Please confirm your password');
+    } else if (ComfirmPasswordValue !== PasswordValue) {
+        setError(ComfirmPassword, "Passwords doesn't match");
+    } else {
+        setSuccess(ComfirmPassword);
+    }
+};
+
+    </script>
+
+</html>
