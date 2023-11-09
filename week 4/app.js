@@ -34,7 +34,7 @@ fetch(apiUrl)
   const windSpeed = data.wind.speed;
 
   const weatherHTML = `
-    <p>The weather in ${city} is ${weatherDescription}</p>
+    <p>The weather in ${input} is ${weatherDescription}</p>
     <p>The temperature is  ${temperature}°C with a wind speed of  ${windSpeed} m/s </p>
   `;
 
