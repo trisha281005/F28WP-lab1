@@ -6,6 +6,7 @@ ourRequest.open('GET', 'https://trisha281005.github.io/F28WP-lab1/week%204/citie
 ourRequest.onload = function() {
 var ourData = JSON.parse(ourRequest.responseText);
 renderHTML(ourData);
+btn.classList.add("hide-me");
 };
 ourRequest.send();
 });
