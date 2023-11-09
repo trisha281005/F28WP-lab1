@@ -16,7 +16,7 @@ btn.addEventListener("click", () => {
         alert("please enter city name")
         return;
     }
-    })
+    }
 
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${api}&units=metric" ;
 
